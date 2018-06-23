@@ -1,8 +1,9 @@
 'use strict';
 
 import mongoose from 'mongoose';
+const Schema = mongoose.Schema;
 
-const teamSchema = mongoose.Schema({
+const teamSchema = Schema({
   name: {
     type: String,
     required: true,
@@ -14,6 +15,9 @@ const teamSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  player: [{
+    type: Schema.Types.ObjectsId, ref: 'player',
+  }],
 });
 
 export default mongoose.model('team', teamSchema);

@@ -1,14 +1,4 @@
-![CF](https://camo.githubusercontent.com/70edab54bba80edb7493cad3135e9606781cbb6b/687474703a2f2f692e696d6775722e636f6d2f377635415363382e706e67) 14: Mongo/Express 2 Resource API
-===
 
-
-## Submission Instructions
-* Work in a fork of this repository
-* Work in a branch on your fork
-* Create a PR to your master from your working branch.
-* Ensure that your repository/branch is connected to travis-ci.com
-* Ensure that your repository/branch is connected to a dyno at heroku.com
-* Heroku and Travis should pick you up and deploy
 * Submit on canvas:
   * a question and observation
   * how long you spent
@@ -47,3 +37,45 @@ Configure the root of your repository with the following files and directories. 
   * create `GET`, `POST`, `PUT`, and `DELETE` routes for your newly added resource
   * test your application to ensure that it meets the standard criteria of a working **full CRUD** REST API
   * use `populate` in the `get()` route logic your  `/api/new-resource-name/:id` route to populate the associated property used to house related resources **(ex: `List.findById(req.params.id).populate('notes')`)**
+
+
+[![Build Status](https://travis-ci.com/Confalone/14-relationship-modeling.svg?branch=master)](https://travis-ci.com/Confalone/14-relationship-modeling)
+
+# Lab 13 - Relationship Modeling
+## Models
+
+### Team Model
+
+### Properties
+  * `name ` (required)
+  * `mascot`
+  * `location` (required)
+
+## Server Endpoints
+### `/api/v1/team`
+* `POST` request
+  * should pass data as stringifed JSON in the body of a post request to create a new team
+### `api/v1/team`
+* `GET` request
+* Fetch all teams
+### `/api/v1/team/:id`
+* `GET` request
+  * should pass the id of a team through the url endpoint to get a specific team
+* `PUT` request
+  * should pass data as stringifed JSON in the body of a put request to overwrite a pre-existing team
+* `DELETE` request
+  * should pass the id of a team though the url endpoint to delete a specific team
+
+### Tests
+ * `GET` - test 200, returns a resource with a valid body
+ * `GET` - test 404, respond with 'not found' for valid requests made with an id that was not found
+ * `PUT` - test 200, returns a resource with an updated body
+ * `PUT` - test 400, responds with 'bad request' if no request body was provided
+ * `PUT` - test 404, responds with 'not found' for valid requests made with an id that was not found
+ * `POST` - test 400, responds with 'bad request' if no request body was provided
+ * `POST` - test 200, returns a resource for requests made with a valid body
+
+
+### License
+
+MIT © Tyler Confalone
