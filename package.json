@@ -1,7 +1,7 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
+  "description": "* Submit on canvas:   * a question and observation   * how long you spent   * link to your pull request   * link to your build at travis-ci URL   * Heroku Server URL",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -13,8 +13,8 @@
     "lint": "eslint **/*.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Tyler Confalone",
+  "license": "MIT",
   "dependencies": {
     "babel-env": "^2.4.1",
     "babel-eslint": "^8.2.3",
@@ -28,5 +28,14 @@
     "morgan": "^1.9.0",
     "require-dir": "^1.0.0",
     "superagent": "^3.8.3"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Confalone/14-relationship-modeling.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Confalone/14-relationship-modeling/issues"
+  },
+  "homepage": "https://github.com/Confalone/14-relationship-modeling#readme"
 }
