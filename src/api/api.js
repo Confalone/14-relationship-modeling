@@ -1,5 +1,7 @@
 'use strict';
 
+import team from './models/team.js';
+import player from './models/players.js';
 import express from 'express';
 const router = express.Router();
 
@@ -49,4 +51,23 @@ let sendJSON = (res,data) => {
   res.end();
 };
 
+router.post('/player', (req, res, next) => {
+  
+  player
+    .create(req.body)
+    .then(player => {
+      res.send(player);
+    }).catch(next);
+});
+
+router.get('/player', (req, res, next) => {
+  player
+    .find()
+    .then(player => {
+      player.find().populate('team'.exec().then(fullplayer => {
+        res.send(fullplayer);
+      }).catch(next);
+      // res.send(player);
+    }).catch(next);
+});
 export default router;
