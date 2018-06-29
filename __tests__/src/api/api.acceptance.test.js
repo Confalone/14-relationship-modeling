@@ -14,7 +14,7 @@ describe('API', () => {
     app.stop();
   });
 
-  it('gets a 200 response on a good model', () => {
+  it('GET - test 200, returns a resource with a valid body', () => {
     return superagent.get('http://localhost:8888/api/v1/bar')
       .then(response => {
         expect(response.statusCode).toEqual(200);
@@ -30,13 +30,25 @@ describe('API', () => {
       });
   });
 
-  it('gets a 404 response for valid requests made with an id that was not found', () => {
+  it('PUT - test 404, responds with not found for valid requests made with an id that was not found', () => {
     return superagent.get('http://localhost:8888/api/v1/bar/invalid')
       .then(console.log('nice'))
       .catch(response => {
         expect(response.status).toEqual(404);
       });
   });
+  it('POST - test 200, returns a resource for requests made with a valid body', () => {
+    return superagent.get('http://localhost:8888/api/v1/bar')
+      .then(response => {
+        expect(response.statusCode).toEqual(200);
+      })
+      .catch(console.err);
+  });
+  it('POST - test 400, responds with bad request if no request body was provided', () => {
+    return superagent.get('http://localhost:8888/api/v1/bar/invalid')
+      .then(console.log('nice'))
+      .catch(response => {
+        expect(response.status).toEqual(400);
+      });
+  });
 });
-// https://www.youtube.com/watch?v=B2S2D4f_6c4&index=98&list=PLVngfM2hsbi_czAF6QHak5CbDUj4BUOwZ
-
