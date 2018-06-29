@@ -15,9 +15,15 @@ const teamSchema = Schema({
     type: String,
     required: true,
   },
-  player: [{
-    type: Schema.Types.ObjectsId, ref: 'player',
+  players: [{
+    type: Schema.Types.ObjectId, 
+    ref: 'players',
   }],
+});
+
+teamSchema.pre('findOne', function(next) {
+  this.populate('players');
+  next();
 });
 
 export default mongoose.model('team', teamSchema);
