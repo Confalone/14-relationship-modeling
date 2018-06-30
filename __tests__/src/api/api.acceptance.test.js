@@ -1,5 +1,7 @@
 'use strict';
 
+jest.mock('require-dir');
+
 require('babel-register');
 const superagent = require('superagent');
 const app = require('../../../src/app.js');
